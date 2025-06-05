@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:recetas/models/recipe_type_model.dart';
+import 'package:recetas/pages/detail_page.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
 import 'package:recetas/providers/recipe_type_provider.dart';
-import 'package:recetas/pages/detail_page.dart'; // <-- Usa la página de detalles correcta
 
 class RecipeTypeSlider extends StatelessWidget {
   final String nombreCategoria;
-  final String flag; // 'c' para categoría, 'a' para región
-  final String value; // valor de búsqueda
+  final String flag;
+  final String value;
 
   const RecipeTypeSlider({
     super.key,
@@ -16,20 +19,34 @@ class RecipeTypeSlider extends StatelessWidget {
     required this.value,
   });
 
+  Future<List<RecipeType>> fetchRecipes() async {
+    final url = Uri.parse('https://www.themealdb.com/api/json/v1/1/filter.php?$flag=$value');
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      if (data['meals'] != null) {
+        return List<RecipeType>.from(
+          data['meals'].map((json) => RecipeType.fromJson(json)),
+        );
+      }
+    }
+    return [];
+  }
+
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: Provider.of<RecipeTypeProvider>(context, listen: false)
-          .fetchRecipesByType(flag: flag, value: value),
+    return FutureBuilder<List<RecipeType>>(
+      future: fetchRecipes(),
       builder: (context, snapshot) {
-        final recipes = Provider.of<RecipeTypeProvider>(context).recipes;
-
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const SizedBox(
             height: 220,
             child: Center(child: CircularProgressIndicator()),
           );
         }
+
+        final recipes = snapshot.data ?? [];
 
         if (recipes.isEmpty) {
           return const SizedBox(
@@ -81,8 +98,8 @@ class _RecipePoster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<RecipeTypeProvider>(context);
-    final isFav = provider.isFavorite(receta.idMeal);
+    final favProvider = Provider.of<RecipeTypeProvider>(context);
+    final isFav = favProvider.isFavorite(receta.idMeal);
 
     return Container(
       width: 110,
@@ -127,13 +144,12 @@ class _RecipePoster extends StatelessWidget {
               ),
             ],
           ),
-          // Botón de favorito en la esquina superior derecha
           Positioned(
             top: 4,
             right: 4,
             child: GestureDetector(
               onTap: () {
-                provider.toggleFavorite(receta);
+                favProvider.toggleFavorite(receta);
               },
               child: Icon(
                 isFav ? Icons.favorite : Icons.favorite_border,

@@ -4,19 +4,26 @@ import 'package:http/http.dart' as http;
 import 'package:recetas/models/recipe_type_model.dart';
 
 class RecipeTypeProvider extends ChangeNotifier {
-  List<RecipeType> recipes = [];
-  final Set<String> _favoriteIds = {}; // Usamos un Set para ids únicos
+  final Set<String> _favoriteIds = {};
 
-  List<RecipeType> get favoriteRecipes =>
-      recipes.where((r) => _favoriteIds.contains(r.idMeal)).toList();
+  List<RecipeType> _allLoadedRecipes = [];
+
+  List<RecipeType> get favoriteRecipes => _allLoadedRecipes
+      .where((r) => _favoriteIds.contains(r.idMeal))
+      .toList();
 
   bool isFavorite(String idMeal) => _favoriteIds.contains(idMeal);
 
   void toggleFavorite(RecipeType recipe) {
     if (_favoriteIds.contains(recipe.idMeal)) {
       _favoriteIds.remove(recipe.idMeal);
+      _allLoadedRecipes.removeWhere((r) => r.idMeal == recipe.idMeal);
     } else {
       _favoriteIds.add(recipe.idMeal);
+      // Solo agrega si no existe ya
+      if (!_allLoadedRecipes.any((r) => r.idMeal == recipe.idMeal)) {
+        _allLoadedRecipes.add(recipe);
+      }
     }
     notifyListeners();
   }
@@ -30,7 +37,7 @@ class RecipeTypeProvider extends ChangeNotifier {
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       if (data['meals'] != null) {
-        recipes = List<RecipeType>.from(
+        _allLoadedRecipes = List<RecipeType>.from(
           data['meals'].map((json) => RecipeType.fromJson(json)),
         );
         notifyListeners();
