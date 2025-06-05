@@ -1,25 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:recetas/pages/pag_area.dart';
-import 'package:recetas/pages/pag_categoria.dart';
-import 'package:recetas/pages/pag_favoritos.dart';
 import 'package:recetas/widgets/background.dart';
 
-class PagInicio extends StatelessWidget {
-  const PagInicio({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Background(), 
-        InicioBody()
+        HomeBody()
       ]
     );
   }
 }
 
-class InicioBody extends StatelessWidget {
-  const InicioBody({super.key});
+class HomeBody extends StatelessWidget {
+  const HomeBody({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recetas/pages/pag_area.dart';
 import 'package:recetas/pages/pag_categoria.dart';
 import 'package:recetas/pages/pag_favoritos.dart';
-import 'package:recetas/pages/pag_inicio.dart';
+import 'package:recetas/pages/home_page.dart';
 
 class MainScaffold extends StatefulWidget {
   const MainScaffold({super.key});
@@ -16,7 +16,7 @@ class _MainScaffoldState extends State<MainScaffold> {
   final PageController _pageController = PageController();
 
   final List<Widget> _pages = [
-    PagInicio(),
+    HomePage(),
     Pag_categoria(),
     Pag_area(),
     Pag_favoritos(),
@@ -28,7 +28,7 @@ class _MainScaffoldState extends State<MainScaffold> {
     });
     _pageController.animateToPage(
       index,
-      duration: const Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 800),
       curve: Curves.easeInOut,
     );
   }
@@ -51,8 +51,8 @@ class _MainScaffoldState extends State<MainScaffold> {
       body: PageView(
         controller: _pageController,
         onPageChanged: _onPageChanged,
-        children: _pages,
         physics: const BouncingScrollPhysics(),
+        children: _pages,
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
