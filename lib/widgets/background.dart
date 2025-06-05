@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
-
 
 // Fondo de la aplicación
 class Background extends StatelessWidget {
