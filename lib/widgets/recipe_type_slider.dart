@@ -73,7 +73,7 @@ class RecipePosterState extends State<RecipePoster> {
     
     return Container(
       width: 110,
-      margin: EdgeInsets.symmetric(horizontal: 10),
+      margin: EdgeInsets.symmetric(horizontal: 15),
       child: Column(
         children: [
           Stack(
