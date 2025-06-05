@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recetas/pages/pag_area.dart';
-import 'package:recetas/pages/pag_categoria.dart';
+import 'package:recetas/pages/category_page.dart';
 import 'package:recetas/pages/pag_favoritos.dart';
 import 'package:recetas/pages/home_page.dart';
 
@@ -17,7 +17,7 @@ class _MainScaffoldState extends State<MainScaffold> {
 
   final List<Widget> _pages = [
     HomePage(),
-    Pag_categoria(),
+    CategoryPage(),
     Pag_area(),
     Pag_favoritos(),
   ];

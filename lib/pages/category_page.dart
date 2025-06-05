@@ -3,8 +3,8 @@ import 'package:recetas/widgets/background.dart';
 import 'package:recetas/widgets/recipe_type_slider.dart';
 import '../models/class_comida.dart';
 
-class Pag_categoria extends StatelessWidget {
-  const Pag_categoria({super.key});
+class CategoryPage extends StatelessWidget {
+  const CategoryPage({super.key});
 
   @override
   Widget build(BuildContext context) {
