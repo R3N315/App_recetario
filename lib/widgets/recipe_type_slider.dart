@@ -131,6 +131,25 @@ class _RecipePoster extends StatelessWidget {
                       height: 120,
                       width: 110,
                       fit: BoxFit.cover,
+                      // Muestra el asset mientras carga
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Image.asset(
+                          'assets/no-image.jpg',
+                          height: 120,
+                          width: 110,
+                          fit: BoxFit.cover,
+                        );
+                      },
+                      // Muestra el asset si hay error
+                      errorBuilder: (context, error, stackTrace) {
+                        return Image.asset(
+                          'assets/no-image.jpg',
+                          height: 120,
+                          width: 110,
+                          fit: BoxFit.cover,
+                        );
+                      },
                     ),
                   ),
                 ),

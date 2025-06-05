@@ -10,7 +10,7 @@ class RegionPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Recetas por Área',
+          'Recetas de paises',
           style: TextStyle(
             color: Color.fromARGB(255, 231, 119, 26),
             fontSize: 22,
