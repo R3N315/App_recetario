@@ -43,6 +43,26 @@ class CategoryPage extends StatelessWidget {
                     flag: 'c',
                     value: 'Pasta',
                   ),
+                  RecipeTypeSlider(
+                    nombreCategoria: 'Reses',
+                    flag: 'c',
+                    value: 'Beef',
+                  ),
+                  RecipeTypeSlider(
+                    nombreCategoria: 'Vegetariana',
+                    flag: 'c',
+                    value: 'Vegetarian',
+                  ),
+                  RecipeTypeSlider(
+                    nombreCategoria: 'Postres',
+                    flag: 'c',
+                    value: 'Dessert',
+                  ),
+                  RecipeTypeSlider(
+                    nombreCategoria: 'Diversos',
+                    flag: 'c',
+                    value: 'Miscellaneous',
+                  ),
                 ],
               ),
             ),

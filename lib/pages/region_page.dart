@@ -43,6 +43,26 @@ class RegionPage extends StatelessWidget {
                     flag: 'a',
                     value: 'Japanese',
                   ),
+                  RecipeTypeSlider(
+                    nombreCategoria: 'Americana',
+                    flag: 'a',
+                    value: 'American',
+                  ),
+                  RecipeTypeSlider(
+                    nombreCategoria: 'China',
+                    flag: 'a',
+                    value: 'Chinese',
+                  ),
+                  RecipeTypeSlider(
+                    nombreCategoria: 'Española',
+                    flag: 'a',
+                    value: 'Spanish',
+                  ),
+                  RecipeTypeSlider(
+                    nombreCategoria: 'Alemana',
+                    flag: 'a',
+                    value: 'Dutch',
+                  ),
                 ],
               ),
             ),
