@@ -71,6 +71,3 @@ class _MainScaffoldState extends State<MainScaffold> {
   }
 }
 
-
-Agregar favoritos (energy y chat)
-Incluir api (modelo receta, modelo typo, provedor)
