@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recetas/pages/region_page.dart';
 import 'package:recetas/pages/category_page.dart';
-import 'package:recetas/pages/pag_favoritos.dart';
+import 'package:recetas/pages/favs_page.dart';
 import 'package:recetas/pages/home_page.dart';
 
 class MainScaffold extends StatefulWidget {
@@ -19,7 +19,7 @@ class _MainScaffoldState extends State<MainScaffold> {
     HomePage(),
     CategoryPage(),
     RegionPage(),
-    Pag_favoritos(),
+    FavsPage(),
   ];
 
   void _onItemTapped(int index) {
