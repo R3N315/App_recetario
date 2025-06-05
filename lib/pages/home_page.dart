@@ -61,9 +61,8 @@ class Header extends StatelessWidget {
           Text(
             'Recetario JR',
             style: TextStyle(
-              fontSize: 30,
+              fontSize: 32,
               fontWeight: FontWeight.bold,
-              //color: Color.fromARGB(255, 231, 119, 26),
               color: Colors.white,
             ),
             textAlign: TextAlign.center,
@@ -85,7 +84,7 @@ class RecipeImage extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
         child: Image.asset(
           'assets/recetas.jpeg',
-          height: 500,
+          height: 496,
           width: double.infinity,
           fit: BoxFit.cover,
         ),
