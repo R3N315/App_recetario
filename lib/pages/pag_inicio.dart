@@ -1,155 +1,25 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:recetas/pages/pag_area.dart';
 import 'package:recetas/pages/pag_categoria.dart';
 import 'package:recetas/pages/pag_favoritos.dart';
+import 'package:recetas/widgets/background.dart';
 
-class Pag_portada extends StatelessWidget {
-  const Pag_portada({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(children: [Background(), Inicio()]);
-  }
-}
-
-// Manejo de navegación entre páginas
-class NavigationScreen extends StatefulWidget {
-  const NavigationScreen({super.key});
-
-  @override
-  _NavigationScreenState createState() => _NavigationScreenState();
-}
-
-class _NavigationScreenState extends State<NavigationScreen> {
-  int _selectedIndex = 0;
-  final PageController _pageController = PageController();
-
-  final List<Widget> _pages = [
-    Pag_portada(),
-    Pag_categoria(),
-    Pag_area(),
-    Pag_favoritos(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-    _pageController.animateToPage(
-      index,
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-    );
-  }
-
-  void _onPageChanged(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
+class PagInicio extends StatelessWidget {
+  const PagInicio({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageView(
-        controller: _pageController,
-        onPageChanged: _onPageChanged,
-        children: _pages,
-        physics: const BouncingScrollPhysics(), // efecto natural al deslizar
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        selectedItemColor: const Color.fromARGB(255, 252, 165, 15),
-        unselectedItemColor: const Color.fromARGB(255, 206, 106, 20),
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Inicio"),
-          BottomNavigationBarItem(icon: Icon(Icons.restaurant_menu), label: "Categorías"),
-          BottomNavigationBarItem(icon: Icon(Icons.public), label: "Área"),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Favoritas"),
-        ],
-      ),
+    return Stack(
+      children: [
+        Background(), 
+        InicioBody()
+      ]
     );
   }
 }
 
-
-// Fondo de la aplicación
-class Background extends StatelessWidget {
-  const Background({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFFFFE082), // Coral vibrante
-            Color(0xFFFF8E53), // Naranja suave
-            Color.fromARGB(255, 169, 64, 43), // Rosa salmón
-          ],
-          stops: [0.0, 0.5, 1.0],
-        ),
-      ),
-      child: Stack(
-        children: [
-          // Círculos decorativos con blur
-          Positioned(
-            top: -50,
-            right: -50,
-            child: Container(
-              width: 200,
-              height: 200,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white.withOpacity(0.1),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.white.withOpacity(0.05),
-                    blurRadius: 60,
-                    spreadRadius: 30,
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: -80,
-            left: -80,
-            child: Container(
-              width: 250,
-              height: 250,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white.withOpacity(0.08),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.white.withOpacity(0.03),
-                    blurRadius: 80,
-                    spreadRadius: 40,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class Inicio extends StatelessWidget {
-  const Inicio({super.key});
+class InicioBody extends StatelessWidget {
+  const InicioBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -189,14 +59,14 @@ class Inicio extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
-              textAlign: TextAlign.center, // <-- frase centrada aquí
+              textAlign: TextAlign.center,
             ),
             SizedBox(height: 16),
             ClipRRect(
               borderRadius: BorderRadius.circular(15),
               child: Image.asset(
                 'assets/recetas.jpeg',
-                height: 450,
+                height: 440,
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),

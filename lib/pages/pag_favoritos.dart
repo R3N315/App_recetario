@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recetas/pages/pag_inicio.dart' as inicio;
+import 'package:recetas/widgets/background.dart';
 import '../models/class_comida.dart';
 
 class Pag_favoritos extends StatelessWidget {
@@ -38,7 +38,7 @@ class Pag_favoritos extends StatelessWidget {
       body: Container(
         child: Stack(
           children: [
-            inicio.Background(),
+            Background(),
             SingleChildScrollView(
               child: Column(
                 children: [

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recetas/pages/detalles_platillo.dart';
-import 'package:recetas/pages/pag_inicio.dart' as inicio;
+import 'package:recetas/widgets/background.dart';
 import '../models/class_comida.dart';
 
 class Categoria {
@@ -84,7 +84,7 @@ class Pag_categoria extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          inicio.Background(),
+          Background(),
           SafeArea(
             child: SingleChildScrollView(
               physics: BouncingScrollPhysics(),

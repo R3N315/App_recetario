@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:recetas/pages/pag_inicio.dart';
+import 'package:flutter/services.dart';
+import 'package:recetas/widgets/main_scaffold.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+    WidgetsFlutterBinding.ensureInitialized();
+    SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown // Solo permitir la orientación vertical
+    ]).then((_) {
+        runApp(MyApp());
+    });
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -10,8 +19,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'App Recetas',
-      home: NavigationScreen(),
+      title: 'Recetario JR',
+      home: MainScaffold(),
     );
   }
 }

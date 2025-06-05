@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recetas/pages/pag_inicio.dart' as inicio;
+import 'package:recetas/widgets/background.dart';
 import '../models/class_comida.dart';
 
 class PaginaDetalle extends StatelessWidget { 
@@ -33,7 +33,7 @@ class PaginaDetalle extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          inicio.Background(),
+          Background(),
           SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             padding: EdgeInsets.all(16),
