@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recetas/widgets/background.dart';
 import 'package:recetas/widgets/recipe_type_slider.dart';
-import '../models/class_comida.dart';
+import '../models/recipes_model.dart';
 
 class CategoryPage extends StatelessWidget {
   const CategoryPage({super.key});

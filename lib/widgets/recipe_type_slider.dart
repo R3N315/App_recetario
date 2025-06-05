@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recetas/models/class_comida.dart';
+import 'package:recetas/models/recipes_model.dart';
 import 'package:recetas/pages/detalles_platillo.dart';
 
 class RecipeTypeSlider extends StatelessWidget {

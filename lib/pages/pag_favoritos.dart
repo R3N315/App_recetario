@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recetas/widgets/background.dart';
-import '../models/class_comida.dart';
+import '../models/recipes_model.dart';
 
 class Pag_favoritos extends StatelessWidget {
   // ejemplo de lista de recetas favoritas

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recetas/widgets/background.dart';
-import '../models/class_comida.dart';
+import '../models/recipes_model.dart';
 
 class PaginaDetalle extends StatelessWidget { 
   final Comida comida;
